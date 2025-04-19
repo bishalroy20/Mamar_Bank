@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 from pathlib import Path
+import dj_database_url
 import environ
 env = environ.Env()
 
@@ -33,7 +34,8 @@ DEBUG = True
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ['https://mamar-bank.onrender.com' , 'https://*.127.0.0.1']
 
 
 # Application definition
@@ -87,15 +89,21 @@ WSGI_APPLICATION = 'mamarbank.wsgi.application'
 
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': env("DB_NAME"),
+#         'USER': env("DB_USER"),
+#         'PASSWORD': env("DB_PASSWORD"),
+#         'HOST': env("DB_HOST"),
+#         'PORT': env("DB_PORT"),
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env("DB_NAME"),
-        'USER': env("DB_USER"),
-        'PASSWORD': env("DB_PASSWORD"),
-        'HOST': env("DB_HOST"),
-        'PORT': env("DB_PORT"),
-    }
+    'default' : dj_database_url.config(
+        default = 'postgresql://mamar_bank_1jw7_user:ziu8A9kxDNQV6fnQKYeJmGIHmb5Ya26K@dpg-d01q7vvgi27c73eu16a0-a.oregon-postgres.render.com/mamar_bank_1jw7'
+    )
 }
 # DATABASES = {
 #     'default': {
