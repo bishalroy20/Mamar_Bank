@@ -8,6 +8,7 @@ Django
 django-crispy-forms
 django-email
 django-environ
+dj-database-url
 filelock
 fonttools
 kiwisolver
