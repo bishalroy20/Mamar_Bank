@@ -100,9 +100,12 @@ WSGI_APPLICATION = 'mamarbank.wsgi.application'
 #     }
 # }
 
+
 DATABASES = {
-    'default' : dj_database_url.config(
-        default = 'postgresql://mamar_bank_1jw7_user:ziu8A9kxDNQV6fnQKYeJmGIHmb5Ya26K@dpg-d01q7vvgi27c73eu16a0-a.oregon-postgres.render.com/mamar_bank_1jw7',
+    'default': dj_database_url.config(
+        default='postgresql://mamar_bank_1jw7_user:ziu8A9kxDNQV6fnQKYeJmGIHmb5Ya26K@dpg-d01q7vvgi27c73eu16a0-a.oregon-postgres.render.com/mamar_bank_1jw7',
+        conn_max_age=600,
+        conn_health_checks=True,
     )
 }
 # DATABASES = {
